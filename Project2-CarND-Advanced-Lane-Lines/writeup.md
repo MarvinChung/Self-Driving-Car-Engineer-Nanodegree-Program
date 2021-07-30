@@ -49,16 +49,18 @@ I assume the object points is fixed on a planar therefore its z should equal to 
 
 The result is shown as below:
 ##### Original image
-![alt text][./output_images/calibration1.jpg]
-##### Undistort image
-![alt text][./output_images/calibration1_undistort.jpg]
+<img src="camera_cal/calibration1.jpg" width="800" />
+
+##### Undistort image 
+<img src="output_images/calibration1_undistort.jpg" width="800" />
 
 ### Pipeline (single images)
 
 #### 1. Provide an example of a distortion-corrected image.
 The code is locate at `main.ipynb In [2]`
 I pass the the source image, distortion coefficients and camera matrix to `cv2.undistort` to obtain this result:  
-![alt text][./output_images/test1_undistort.jpg]
+<img src="output_images/test1_undistort.jpg" width="800" />
+
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
@@ -66,7 +68,8 @@ The code is locate at `main.ipynb In [5]`.
 I used a combination of color and gradient thresholds to generate a binary image. First, I applying the sobel filter with direction 'x' on the image then thresholding the image to generate a mask. Then, I generate another mask by thresholding the saturation channel in HSV. I then combined these mask using OR operation to generate the final mask. The final mask is equialvalent to the binary image. 
 Here's an example of my output for this step.  
 
-![alt text][./output_images/test1_binary.jpg]
+<img src="output_images/test1_binary.jpg" width="800" />
+
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 The code is locate at `main.ipynb In [7]`
@@ -86,7 +89,8 @@ dst_points = np.float32([[32
 I then pass the source and destination points to `cv2.getPerspectiveTransform` to get the transform matrix. Then I pass the transform matrix and my source image to `cv2.warpPerspective` to obtain a bird-view image.
 Here’s an example of my output for this step.
 
-![alt text][output_images/test1_bird_view_comparison.jpg]
+<img src="output_images/test1_bird_view_comparison.jpg" width="800" />
+
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
@@ -104,7 +108,7 @@ After I get the x,y values of pixels in both lines. I fit the x and y values usi
 
 
 
-![alt text][./output_images/test1_line_on_warp.jpg]
+<img src="output_images/test1_line_on_warp.jpg" width="800" />
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
@@ -122,7 +126,7 @@ The code is locate at `main.ipynb In [19]`
 The result is shown as belows:
 
 
-![alt text][./output_images/test1_line_image.jpg]
+<img src="output_images/test1_line_image.jpg" width="800" />
 
 ---
 
