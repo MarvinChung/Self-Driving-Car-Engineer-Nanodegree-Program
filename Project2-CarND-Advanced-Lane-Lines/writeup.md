@@ -112,7 +112,7 @@ After I get the x,y values of pixels in both lines. I fit the x and y values usi
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-The code is locate at `main.ipynb In [14] or In[24]`
+The code is locate at `main.ipynb In [14] and In[23]`
 ```
 def calc_radius_of_curvature(poly_fit, y_closest_to_vehicle):
     return ((1 + (2*poly_fit[0]*y_closest_to_vehicle*ym_per_pix + poly_fit[1])**2)**1.5) / np.absolute(2*poly_fit[0])
@@ -126,7 +126,7 @@ The code is locate at `main.ipynb In [19]`
 The result is shown as belows:
 
 
-<img src="output_images/test1_line_image.jpg" width="800" />
+<img src="output_images/test1_line_image_with_texts.jpg" width="800" />
 
 ---
 
