@@ -150,11 +150,11 @@ I think it may be a good start using a well-known structure.
 
 Here are five German traffic signs that I found on the web:
 
-<img src="./web_data/0001.png" width="480" alt="Combined Image" />
-<img src="./web_data/0002.png" width="480" alt="Combined Image" />
-<img src="./web_data/0003.png" width="480" alt="Combined Image" />
-<img src="./web_data/0004.png" width="480" alt="Combined Image" />
-<img src="./web_data/0005.png" width="480" alt="Combined Image" />
+<img src="./web_data/00001.png" width="480" alt="Combined Image" />
+<img src="./web_data/00002.png" width="480" alt="Combined Image" />
+<img src="./web_data/00003.png" width="480" alt="Combined Image" />
+<img src="./web_data/00004.png" width="480" alt="Combined Image" />
+<img src="./web_data/00005.png" width="480" alt="Combined Image" />
 
 The first image might be difficult to classify because it is quite bended.
 The second image and the third image are a little fuzzy.
