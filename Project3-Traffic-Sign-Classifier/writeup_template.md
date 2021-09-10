@@ -53,9 +53,11 @@ signs data set:
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. 
+Here is an exploratory visualization of the data set.   
+
 <img src="visualization.png" width="480" alt="Combined Image" />
-It is a bar chart showing the histogram of labels in training data 
+This is the bar chart showing the histogram of labels in training data   
+
 <img src="bar.png" width="480" alt="Combined Image" />
 ### Design and Test a Model Architecture
 
@@ -64,6 +66,8 @@ It is a bar chart showing the histogram of labels in training data
 As a first step, I decided to convert the images to grayscale because ...
 
 Here is an example of a traffic sign image before and after grayscaling.
+
+<img src="normal.png" width="480" alt="Combined Image" />
 
 <img src="grayscale.png" width="480" alt="Combined Image" />
 
@@ -122,22 +126,30 @@ My final model results were:
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen? 
+
 The Lenet structure is used first.
 * What were some problems with the initial architecture?
+  
 The model looks like overfit since validation accuracy is decreasing but training accuaracy is increasing.
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+
 I add dropout after some layers.
 * Which parameters were tuned? How were they adjusted and why?
-I spend time on tuning "keep_prob" parameters of the dropout. I set it to 0.5 at first and the training accuracy increases slowly. Therefore, I choose a higher probability and it produce better results. 
+
+I spent time on tuning "keep_prob" parameters of the dropout. I set it to 0.5 at first and the training accuracy increases slowly. Therefore, I choose a higher probability and it produce better results. 
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+
 Convolution layers considers spatial information of the image. Therefore, I think this is the reason why it performs better than using fully connected layers. The dropout layer prevents the model from overfitting.
 
 If a well known architecture was chosen:
 * What architecture was chosen?
+
 I choose to use Lenet with some modifications.
 * Why did you believe it would be relevant to the traffic sign application?
+
 I think it may be a good start using a well-known structure.
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+
  The original Lenet structure performs well on training accuracy. However it does not achieve well in validation and test set. Therefore, I add dropout into it.
 
 ### Test a Model on New Images
@@ -146,11 +158,11 @@ I think it may be a good start using a well-known structure.
 
 Here are five German traffic signs that I found on the web:
 
-<img src="./web_data/0001.png" width="480" alt="Combined Image" />
-<img src="./web_data/0002.png" width="480" alt="Combined Image" />
-<img src="./web_data/0003.png" width="480" alt="Combined Image" />
-<img src="./web_data/0004.png" width="480" alt="Combined Image" />
-<img src="./web_data/0005.png" width="480" alt="Combined Image" />
+<img src="./web_data/00001.png" width="480" alt="Combined Image" />
+<img src="./web_data/00002.png" width="480" alt="Combined Image" />
+<img src="./web_data/00003.png" width="480" alt="Combined Image" />
+<img src="./web_data/00004.png" width="480" alt="Combined Image" />
+<img src="./web_data/00005.png" width="480" alt="Combined Image" />
 
 The first image might be difficult to classify because it is quite bended.
 The second image and the third image are a little fuzzy.
@@ -227,6 +239,8 @@ For the fifth image, the model is relatively sure that this is a "Keep right" si
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 The first image is the output of the first convolution layer and the second image is the output of the second convolution layer. The first output looks seems like the model is finding the contour of each symbol. The second output is hard to described, I guess the model is finding some pattern inside the sign.
+
 <img src="conv1.png" width="480" alt="Combined Image" />
+
 <img src="conv2.png" width="480" alt="Combined Image" />
 
