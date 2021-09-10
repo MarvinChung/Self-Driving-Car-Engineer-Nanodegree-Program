@@ -126,22 +126,30 @@ My final model results were:
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen? 
+
 The Lenet structure is used first.
 * What were some problems with the initial architecture?
+  
 The model looks like overfit since validation accuracy is decreasing but training accuaracy is increasing.
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+
 I add dropout after some layers.
 * Which parameters were tuned? How were they adjusted and why?
-I spend time on tuning "keep_prob" parameters of the dropout. I set it to 0.5 at first and the training accuracy increases slowly. Therefore, I choose a higher probability and it produce better results. 
+
+I spent time on tuning "keep_prob" parameters of the dropout. I set it to 0.5 at first and the training accuracy increases slowly. Therefore, I choose a higher probability and it produce better results. 
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+
 Convolution layers considers spatial information of the image. Therefore, I think this is the reason why it performs better than using fully connected layers. The dropout layer prevents the model from overfitting.
 
 If a well known architecture was chosen:
 * What architecture was chosen?
+
 I choose to use Lenet with some modifications.
 * Why did you believe it would be relevant to the traffic sign application?
+
 I think it may be a good start using a well-known structure.
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+
  The original Lenet structure performs well on training accuracy. However it does not achieve well in validation and test set. Therefore, I add dropout into it.
 
 ### Test a Model on New Images
@@ -231,6 +239,8 @@ For the fifth image, the model is relatively sure that this is a "Keep right" si
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 The first image is the output of the first convolution layer and the second image is the output of the second convolution layer. The first output looks seems like the model is finding the contour of each symbol. The second output is hard to described, I guess the model is finding some pattern inside the sign.
+
 <img src="conv1.png" width="480" alt="Combined Image" />
+
 <img src="conv2.png" width="480" alt="Combined Image" />
 
