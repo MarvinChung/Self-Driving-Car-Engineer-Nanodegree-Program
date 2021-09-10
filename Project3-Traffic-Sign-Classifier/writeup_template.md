@@ -53,9 +53,11 @@ signs data set:
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. 
+Here is an exploratory visualization of the data set.   
+
 <img src="visualization.png" width="480" alt="Combined Image" />
-It is a bar chart showing the histogram of labels in training data 
+This is the bar chart showing the histogram of labels in training data   
+
 <img src="bar.png" width="480" alt="Combined Image" />
 ### Design and Test a Model Architecture
 
@@ -64,6 +66,8 @@ It is a bar chart showing the histogram of labels in training data
 As a first step, I decided to convert the images to grayscale because ...
 
 Here is an example of a traffic sign image before and after grayscaling.
+
+<img src="normal.png" width="480" alt="Combined Image" />
 
 <img src="grayscale.png" width="480" alt="Combined Image" />
 
