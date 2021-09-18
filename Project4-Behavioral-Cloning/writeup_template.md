@@ -141,7 +141,7 @@ _________________________________________________________________
 
 #### 3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I use the sample data provided in the porject. Here is an example image of center lane driving:
+To capture good driving behavior, I use the sample data provided in the project. Here is an example image of center lane driving:
 
 <img src="data/IMG/center_2016_12_01_13_46_38_802.jpg" width="480" alt="Combined Image" />
 <img src="data/IMG/center_2016_12_01_13_39_24_689.jpg" width="480" alt="Combined Image" />
