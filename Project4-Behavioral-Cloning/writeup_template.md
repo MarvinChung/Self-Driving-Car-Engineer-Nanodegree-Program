@@ -143,8 +143,8 @@ _________________________________________________________________
 
 To capture good driving behavior, I use the sample data provided in the project. Here is an example image of center lane driving:
 
-<img src="data/IMG/center_2016_12_01_13_46_38_802.jpg" width="480" alt="Combined Image" />
-<img src="data/IMG/center_2016_12_01_13_39_24_689.jpg" width="480" alt="Combined Image" />
+<img src="imgs/center_2016_12_01_13_46_38_802.jpg" width="480" alt="Combined Image" />
+<img src="imgs/center_2016_12_01_13_39_24_689.jpg" width="480" alt="Combined Image" />
 
 To augment the data sat, I also flipped images and angles thinking that this would help data learn how to recover from different angels. For example, here is an image that has then been flipped:
 
