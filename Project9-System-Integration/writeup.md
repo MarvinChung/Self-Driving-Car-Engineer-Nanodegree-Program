@@ -2,7 +2,7 @@
 ![alt text](/Project9-System-Integration/stop.png)
 ###  Run
 - [origin project repo](https://github.com/udacity/CarND-Capstone)  
-- [Download simulator](https://github.com/udacity/self-driving-car-sim/releases/tag/T3_v1.2)  
+- [Download simulator](https://github.com/udacity/CarND-Capstone/releases)  
 ```
 docker build . -t capstone
 docker run -p 4567:4567 -v $PWD:/capstone -v /tmp/log:/root/.ros/ --rm -it capstone
