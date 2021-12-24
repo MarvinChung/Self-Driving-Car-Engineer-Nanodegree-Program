@@ -1,8 +1,8 @@
 # **Extended Kalman Filter** 
 ### Sensor type
-Lidar data provides: position
-<img src="imgs/lidar.png" width="480" alt="Combined Image" />	
-Radar data provides: range, bearing and raidal velocity
+Lidar data provides: position  
+<img src="imgs/lidar.png" width="480" alt="Combined Image" />	  
+Radar data provides: range, bearing and raidal velocity  
 <img src="imgs/radar.png" width="480" alt="Combined Image" />
 
 ### State
@@ -19,5 +19,4 @@ The Extended Kalman Filter uses a method called first order Taylor expansion. De
 <img src="imgs/algorithm-generalization.jpg" width="480" alt="Combined Image" />
 
 ### General flow 
-<>
 <img src="imgs/general-flow.png" width="480" alt="Combined Image" />
