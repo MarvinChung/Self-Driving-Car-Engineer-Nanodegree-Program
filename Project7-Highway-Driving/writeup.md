@@ -3,11 +3,7 @@
 ###  Run
 - [origin project repo](https://github.com/udacity/CarND-Path-Planning-Project)  
 - [Download simulator](https://github.com/udacity/self-driving-car-sim/releases/tag/T3_v1.2)  
-```
-./run.sh
-# Open the simulator and choose Kidnapped vehicle
-# Click start
-```
+
 ### Intro 
 1. Waypoints (Spline)
 Use waypoints to update the car trajectory.
