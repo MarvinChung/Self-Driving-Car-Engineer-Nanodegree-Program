@@ -7,8 +7,11 @@ Radar data provides: range, bearing and raidal velocity
 
 ### State
 The state for Kalman Filter is [px, py, vx, vy].  
-The transformation of lidar data to state is linear. 
-However, the transformation of radar data to state is non linear. Therefore, we need to use Extendd Kalman Filter.   
+The transformation of lidar data to state is linear.   
+<img src="imgs/lidar_h1.png" width="120" alt="Combined Image" />
+<img src="imgs/lidar_h2.png" width="120" alt="Combined Image" />  
+However, the transformation of radar data to state is non linear. Therefore, we need to use Extended Kalman Filter.  
+<img src="imgs/radar_h.png" width="320" alt="Combined Image" />  
 The Extended Kalman Filter uses a method called first order Taylor expansion. Details are shown in [sensor-fusion-ekf-reference](sensor-fusion-ekf-reference.pdf)
 
 ### Overview image
