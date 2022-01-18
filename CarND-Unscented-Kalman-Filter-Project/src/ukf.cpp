@@ -21,10 +21,10 @@ UKF::UKF() {
   P_ = MatrixXd(5, 5);
 
   // Process noise standard deviation longitudinal acceleration in m/s^2
-  std_a_ = 30;
+  std_a_ = 1.6;
 
   // Process noise standard deviation yaw acceleration in rad/s^2
-  std_yawdd_ = 30;
+  std_yawdd_ = 0.6;
   
   /**
    * DO NOT MODIFY measurement noise values below.
@@ -66,9 +66,14 @@ UKF::UKF() {
   weights_   = VectorXd(2*n_aug_+1);
   weights_(0) = lambda_ / (n_aug_ + lambda_);
   for(int i = 1; i < n_aug_ * 2 + 1; i++){
-    weights_(i) = 1.0 / (2 * (n_aug_ + lambda_));
+    weights_(i) = 0.5 /  (n_aug_ + lambda_);
   }
 
+  this->P_(0, 0) = 0.05;
+  this->P_(1, 1) = 0.05;
+  this->P_(2, 2) = 1.0;
+  this->P_(3, 3) = 1.0;
+  this->P_(4, 4) = 1.0;
 }
 
 UKF::~UKF() {}
@@ -97,7 +102,9 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
       // change RADAR measurement to state space
       float px = rho * cos(phi);
       float py = rho * sin(phi);
-      float v = 0;
+      float vx = delta_rho * cos(phi);
+      float vy = delta_rho * sin(phi);
+      float v  = sqrt(vx*vx + vy * vy);
       float psi = 0;
       float delta_psi = 0;
 
@@ -115,12 +122,6 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
 
     }
 
-    this->P_(0, 0) = 0.05;
-    this->P_(1, 1) = 0.05;
-    this->P_(2, 2) = 1.0;
-    this->P_(3, 3) = 1.0;
-    this->P_(4, 4) = 1.0;
-
     time_us_ = meas_package.timestamp_;
 
     // done initializing, no need to predict or update
@@ -128,7 +129,7 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
     return;
   }
 
-  float dt       =  (meas_package.timestamp_ - time_us_) / 1000000.0;
+  double dt       =  (meas_package.timestamp_ - time_us_) / 1000000.0;
   time_us_ = meas_package.timestamp_;
 
   this->Prediction(dt);
@@ -229,10 +230,11 @@ void UKF::Prediction(double delta_t) {
   }
 
   // predicted state mean
-  x_.fill(0.0);
-  for (int i = 0; i < 2 * n_aug_ + 1; ++i) {  // iterate over sigma points
-    x_ = x_ + weights_(i) * Xsig_pred_.col(i);
-  }
+  // x_.fill(0.0);
+  // for (int i = 0; i < 2 * n_aug_ + 1; ++i) {  // iterate over sigma points
+  //   x_ = x_ + weights_(i) * Xsig_pred_.col(i);
+  // }
+  x_ = Xsig_pred_ * weights_;
 
   // predicted state covariance matrix
   P_.fill(0.0);
@@ -290,10 +292,6 @@ void UKF::UpdateLidar(MeasurementPackage meas_package) {
     // residual
     VectorXd z_diff = Zsig.col(i) - z_pred;
 
-    // angle normalization
-    while (z_diff(1)> M_PI) z_diff(1)-=2.*M_PI;
-    while (z_diff(1)<-M_PI) z_diff(1)+=2.*M_PI;
-
     S = S + weights_(i) * z_diff * z_diff.transpose();
   }
 
@@ -324,15 +322,19 @@ void UKF::UpdateLidar(MeasurementPackage meas_package) {
   MatrixXd K = Tc * S.inverse();
 
   // residual
-  VectorXd z_diff = meas_package.raw_measurements_ - z_pred;
-
-  // angle normalization
-  while (z_diff(1)> M_PI) z_diff(1)-=2.*M_PI;
-  while (z_diff(1)<-M_PI) z_diff(1)+=2.*M_PI;
+  VectorXd z = VectorXd(n_z);
+  z(0) = meas_package.raw_measurements_(0);
+  z(1) = meas_package.raw_measurements_(1);
+  VectorXd z_diff = z - z_pred;
 
   // update state mean and covariance matrix
   x_ = x_ + K * z_diff;
   P_ = P_ - K*S*K.transpose();
+
+  //NIS Lidar Update
+  // cout << "calculation the NIS_Laser" << endl;
+  // NIS_laser_ = z_diff.transpose() * S.inverse() * z_diff;
+  // cout << "finish  NIS lidar calculation" << endl;
 }
 
 void UKF::UpdateRadar(MeasurementPackage meas_package) {
@@ -421,7 +423,12 @@ void UKF::UpdateRadar(MeasurementPackage meas_package) {
   MatrixXd K = Tc * S.inverse();
 
   // residual
-  VectorXd z_diff = meas_package.raw_measurements_ - z_pred;
+  VectorXd z = VectorXd(n_z);
+  z(0) = meas_package.raw_measurements_(0);
+  z(1) = meas_package.raw_measurements_(1);
+  z(2) = meas_package.raw_measurements_(2);
+
+  VectorXd z_diff = z - z_pred;
 
   // angle normalization
   while (z_diff(1)> M_PI) z_diff(1)-=2.*M_PI;
@@ -430,4 +437,8 @@ void UKF::UpdateRadar(MeasurementPackage meas_package) {
   // update state mean and covariance matrix
   x_ = x_ + K * z_diff;
   P_ = P_ - K*S*K.transpose();
+
+  //NIS Update
+  // NIS_radar_ = z_diff.transpose() * S.inverse() * z_diff;
+  // cout << "finish NIS_radar calculation" << endl;
 }
