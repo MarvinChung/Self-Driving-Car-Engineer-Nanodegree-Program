@@ -23,3 +23,6 @@ The Extended Kalman Filter uses a method called first order Taylor expansion. De
 
 ### General flow 
 <img src="imgs/general-flow.png" width="480" alt="Combined Image" />
+
+### Result (gif)
+Lidar measurements are red circles, radar measurements are blue circles with an arrow pointing in the direction of the observed angle, and estimation markers are green triangles.
